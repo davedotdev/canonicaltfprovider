@@ -37,6 +37,7 @@ go build
 2. You'll need Terraform (version 0.12.12 ideally).
 
 ```bash
+terraform init
 terraform providers schema -json 
 ```
 
