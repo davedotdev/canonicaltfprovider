@@ -50,48 +50,48 @@ func Canonical() *schema.Resource {
 		Delete: tDelete,
 
 		Schema: map[string]*schema.Schema{
-			"stringtest": &schema.Schema{
+			"string1": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
 			},
 
-			"inttest": &schema.Schema{
+			"int1": &schema.Schema{
 				Type:     schema.TypeInt,
 				Required: true,
 			},
 
-			"booltest": &schema.Schema{
+			"bool1": &schema.Schema{
 				Type:     schema.TypeBool,
 				Required: true,
 			},
-			"floattest": &schema.Schema{
+			"float1": &schema.Schema{
 				Type:     schema.TypeFloat,
 				Required: true,
 			},
-			"maptest": {
+			"map1": {
 				Type: schema.TypeMap,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
 			},
-			"settest": &schema.Schema{
+			"set2": &schema.Schema{
 				Type:     schema.TypeSet,
 				Required: true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
-						"setinttest": {
+						"int2": {
 							Type:     schema.TypeInt,
 							Required: true,
 						},
-						"setstringtest": {
+						"string2": {
 							Type:     schema.TypeString,
 							Required: true,
 						},
-						"setbooltest": {
+						"bool2": {
 							Type:     schema.TypeBool,
 							Required: true,
 						},
-						"setfloattest": {
+						"float2": {
 							Type:     schema.TypeFloat,
 							Required: true,
 						},
@@ -100,24 +100,24 @@ func Canonical() *schema.Resource {
 				MinItems: 1,
 				MaxItems: 1,
 			},
-			"listsettest": &schema.Schema{
+			"listset3": &schema.Schema{
 				Type:     schema.TypeList,
 				Required: true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
-						"setinttest": {
+						"int3": {
 							Type:     schema.TypeInt,
 							Required: true,
 						},
-						"setstringtest": {
+						"string3": {
 							Type:     schema.TypeString,
 							Required: true,
 						},
-						"setbooltest": {
+						"bool3": {
 							Type:     schema.TypeBool,
 							Required: true,
 						},
-						"setfloattest": {
+						"float3": {
 							Type:     schema.TypeFloat,
 							Required: true,
 						},
@@ -126,90 +126,90 @@ func Canonical() *schema.Resource {
 				MinItems: 1,
 				MaxItems: 1,
 			},
-			"setnestedtest": &schema.Schema{
+			"setnested4": &schema.Schema{
 				Type:     schema.TypeSet,
 				Required: true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
-						"setinttest": {
+						"int4": {
 							Type:     schema.TypeInt,
 							Required: true,
 						},
-						"setstringtest": {
+						"string4": {
 							Type:     schema.TypeString,
 							Required: true,
 						},
-						"setbooltest": {
+						"bool4": {
 							Type:     schema.TypeBool,
 							Required: true,
 						},
-						"setfloattest": {
+						"float4": {
 							Type:     schema.TypeFloat,
 							Required: true,
 						},
-						"setsettest": {
+						"set5": {
 							Type:     schema.TypeSet,
 							Required: true,
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
-									"setinttest": {
+									"int5": {
 										Type:     schema.TypeInt,
 										Required: true,
 									},
-									"setstringtest": {
+									"string5": {
 										Type:     schema.TypeString,
 										Required: true,
 									},
-									"setbooltest": {
+									"bool5": {
 										Type:     schema.TypeBool,
 										Required: true,
 									},
-									"setfloattest": {
+									"float5": {
 										Type:     schema.TypeFloat,
 										Required: true,
 									},
-									"setsettest": {
+									"set6": {
 										Type:     schema.TypeSet,
 										Required: true,
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
-												"setinttest": {
+												"int6": {
 													Type:     schema.TypeInt,
 													Required: true,
 												},
-												"setstringtest": {
+												"string6": {
 													Type:     schema.TypeString,
 													Required: true,
 												},
-												"setbooltest": {
+												"bool6": {
 													Type:     schema.TypeBool,
 													Required: true,
 												},
-												"setfloattest": {
+												"float6": {
 													Type:     schema.TypeFloat,
 													Required: true,
 												},
 											},
 										},
 									},
-									"setlisttest": {
+									"listset7": {
 										Type:     schema.TypeList,
 										Required: true,
 										Elem: &schema.Resource{
 											Schema: map[string]*schema.Schema{
-												"setinttest": {
+												"int7": {
 													Type:     schema.TypeInt,
 													Required: true,
 												},
-												"setstringtest": {
+												"string7": {
 													Type:     schema.TypeString,
 													Required: true,
 												},
-												"setbooltest": {
+												"bool7": {
 													Type:     schema.TypeBool,
 													Required: true,
 												},
-												"setfloattest": {
+												"float7": {
 													Type:     schema.TypeFloat,
 													Required: true,
 												},
@@ -219,24 +219,24 @@ func Canonical() *schema.Resource {
 								},
 							},
 						},
-						"setlisttest": {
+						"listset8": {
 							Type:     schema.TypeList,
 							Required: true,
 							Elem: &schema.Resource{
 								Schema: map[string]*schema.Schema{
-									"setinttest": {
+									"int8": {
 										Type:     schema.TypeInt,
 										Required: true,
 									},
-									"setstringtest": {
+									"string8": {
 										Type:     schema.TypeString,
 										Required: true,
 									},
-									"setbooltest": {
+									"bool8": {
 										Type:     schema.TypeBool,
 										Required: true,
 									},
-									"setfloattest": {
+									"float8": {
 										Type:     schema.TypeFloat,
 										Required: true,
 									},
@@ -248,15 +248,13 @@ func Canonical() *schema.Resource {
 				MinItems: 1,
 				MaxItems: 1,
 			},
-			"liststringtest": &schema.Schema{
+			"liststring9": &schema.Schema{
 				Type:     schema.TypeList,
 				Required: true,
 				Elem: &schema.Schema{
 					Type:     schema.TypeString,
 					Required: true,
 				},
-				MinItems: 1,
-				MaxItems: 1,
 			},
 		},
 	}
