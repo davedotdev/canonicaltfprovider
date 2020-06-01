@@ -1,55 +1,122 @@
-/*
-
-***********************************************
-Licensed under BSD-3-Clause - see license file.
-***********************************************
-
-Release Grade
-
-__Helpful Info__
-
-https://github.com/hashicorp/terraform/issues/17579
-Talks about how resource names are external to resources and not accessible by code.
-Separation of concerns etc.
-
-*/
-
 package main
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-func tCreate(d *schema.ResourceData, m interface{}) error {
-	// No purpose
-
-	return tRead(d, m)
+// Set2 type
+type Set2 struct {
+	Int2    int
+	String2 string
+	Bool2   bool
+	Float2  float64
 }
 
-func tRead(d *schema.ResourceData, m interface{}) error {
+// Listset3 type
+type Listset3 struct {
+	Int3    int
+	String3 string
+	Bool3   bool
+	Float3  float64
+}
+
+// Setnested5 type
+type Setnested5 struct {
+	Int5       int
+	String5    string
+	Bool5      bool
+	Float5     float64
+	Setnested6 Setnested6
+	Listset7   []Listset7
+}
+
+// Setnested4 type
+type Setnested4 struct {
+	Int4       int
+	String4    string
+	Bool4      bool
+	Float4     float64
+	Setnested5 Setnested5
+	Listset8   []Listset8
+}
+
+// Setnested6 type
+type Setnested6 struct {
+	Int6    int
+	String6 string
+	Bool6   bool
+	Float6  float64
+}
+
+// Listset7 type
+type Listset7 struct {
+	Int7    int
+	String7 string
+	Bool7   bool
+	Float7  float64
+}
+
+// Listset8 type
+type Listset8 struct {
+	Int8    int
+	String8 string
+	Bool8   bool
+	Float8  float64
+}
+
+// Contains all the data to do some pretend read/writes
+type tCanonicalType struct {
+	String1     string
+	Int1        int
+	Bool1       bool
+	Float1      float64
+	Map1        map[string]interface{}
+	Set2        *schema.Set
+	Listset3    []interface{}
+	Setnested4  interface{}
+	Liststring9 []interface{}
+}
+
+// Create func
+func Create(d *schema.ResourceData, m interface{}) error {
+
+	return nil
+
+}
+
+// Read func
+func Read(d *schema.ResourceData, m interface{}) error {
 
 	return nil
 }
 
-func tUpdate(d *schema.ResourceData, m interface{}) error {
+// Update func
+func Update(d *schema.ResourceData, m interface{}) error {
 
-	return tRead(d, m)
+	return nil
+
 }
 
-func tDelete(d *schema.ResourceData, m interface{}) error {
+// Delete func
+func Delete(d *schema.ResourceData, m interface{}) error {
 
+	d.SetId("")
 	return nil
 }
 
 // Canonical is the schema for this canonical resource
 func Canonical() *schema.Resource {
 	return &schema.Resource{
-		Create: tCreate,
-		Read:   tRead,
-		Update: tUpdate,
-		Delete: tDelete,
+		Create: Create,
+		Read:   Read,
+		Update: Update,
+		Delete: Delete,
 
 		Schema: map[string]*schema.Schema{
+			"resource_name": &schema.Schema{
+				Type:     schema.TypeString,
+				Required: true,
+			},
 			"string1": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
@@ -69,7 +136,8 @@ func Canonical() *schema.Resource {
 				Required: true,
 			},
 			"map1": {
-				Type: schema.TypeMap,
+				Type:     schema.TypeMap,
+				Required: true,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
@@ -147,7 +215,7 @@ func Canonical() *schema.Resource {
 							Type:     schema.TypeFloat,
 							Required: true,
 						},
-						"set5": {
+						"setnested5": {
 							Type:     schema.TypeSet,
 							Required: true,
 							Elem: &schema.Resource{
@@ -168,7 +236,7 @@ func Canonical() *schema.Resource {
 										Type:     schema.TypeFloat,
 										Required: true,
 									},
-									"set6": {
+									"setnested6": {
 										Type:     schema.TypeSet,
 										Required: true,
 										Elem: &schema.Resource{
@@ -252,8 +320,7 @@ func Canonical() *schema.Resource {
 				Type:     schema.TypeList,
 				Required: true,
 				Elem: &schema.Schema{
-					Type:     schema.TypeString,
-					Required: true,
+					Type: schema.TypeString,
 				},
 			},
 		},

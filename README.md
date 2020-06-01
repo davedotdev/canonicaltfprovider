@@ -31,17 +31,15 @@ The reason for this is to dump the JSON schema in v0.12.12 of Terraform.
 git clone https://github.com/davedotdev/canonicaltfprovider.git
 cd canonicaltfprovider
 go mod download
-go build
 ```
 
-2. You'll need Terraform (version 0.12.12 ideally).
+2. You'll need Terraform (version 0.12.12).
 
 ```bash
-terraform init
-terraform providers schema -json 
+source build.sh
 ```
 
-The terraform command dumps out the JSON schema for the canonical provider which looks like below (prettified). 
+What happens next is the binary is created, Terraform is init'd and then the command `terraform providers schema -json` is executed, which outputs JSON which looks like below (once it's been prettified). 
 
 ```json
 {
@@ -175,4 +173,6 @@ The terraform command dumps out the JSON schema for the canonical provider which
 }
 ```
 
+3. You can run `terraform validate` which checks the `example.tf.json` contents against the provider schema. The json file contains a resource which matches the schema so all should be fine!
 
+This provider doesn't do anything else, so don't expect any CRUD functionality. It's just an exercise framework for various schema and resource code paths.
